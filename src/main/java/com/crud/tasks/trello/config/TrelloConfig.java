@@ -19,4 +19,20 @@ public class TrelloConfig {
 
     @Value("${trello.app.username}")
     private String trelloUsername;
+
+    public String getTrelloApiEndpoint() {
+        return trelloApiEndpoint;
+    }
+
+    public String getTrelloAppKey() {
+        return trelloAppKey;
+    }
+
+    public String getTrelloToken() {
+        return trelloToken;
+    }
+
+    public String getTrelloUsername() {
+        return trelloUsername;
+    }
 }
