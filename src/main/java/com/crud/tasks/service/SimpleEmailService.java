@@ -36,7 +36,7 @@ public class SimpleEmailService {
         return mailMessage;
     }
 
-   /* public SimpleMailMessage setCc(final Mail mail) {
+    /* public SimpleMailMessage setCc(final Mail mail) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getMailTo());
