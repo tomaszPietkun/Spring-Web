@@ -41,7 +41,7 @@ public class MailCreatorService {
         context.setVariable("goodbye_message", "Have a nice day!");
         context.setVariable("show_button", false);
         context.setVariable("is_friend", false);
-        context.setVariable("admin_config", userConfig);
+        context.setVariable("admin_config", adminConfig);
         context.setVariable("application_functionality", functionality);
         return templateEngine.process("mail/created-trello-card-mail", context);
     }
@@ -54,7 +54,7 @@ public class MailCreatorService {
         context.setVariable("count_task_url", "http://localhost:8080/v1/trello/getTrelloBoards");
         context.setVariable("button", "Visit website");
         context.setVariable("admin_name", adminConfig.getAdminName());
-        context.setVariable("admin", userConfig);
+        context.setVariable("admin_config", adminConfig);
 
         return templateEngine.process("mail/count-trello-tasks", context);
     }
