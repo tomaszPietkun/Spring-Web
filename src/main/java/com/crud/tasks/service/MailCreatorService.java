@@ -1,7 +1,7 @@
 package com.crud.tasks.service;
 
-import com.crud.tasks.config.AdminConfig;
-import com.crud.tasks.trello.config.TrelloAdminConfig;
+import com.crud.tasks.config.UserConfig;
+import com.crud.tasks.trello.config.AdminConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -15,10 +15,10 @@ import java.util.List;
 public class MailCreatorService {
 
     @Autowired
-    private AdminConfig adminConfig;
+    private UserConfig userConfig;
 
     @Autowired
-    private TrelloAdminConfig trelloAdminConfig;
+    private AdminConfig adminConfig;
 
     @Autowired
     @Qualifier("templateEngine")
@@ -36,25 +36,25 @@ public class MailCreatorService {
         context.setVariable("tasks_url", "http://localhost:8888/crud");
         context.setVariable("button", "Visit website");
         context.setVariable("admin_name", adminConfig.getAdminName());
-        context.setVariable("admin_company", trelloAdminConfig.getCompanyName());
-        context.setVariable("admin_company_email", trelloAdminConfig.getCompanyMail());
+        context.setVariable("admin_company", adminConfig.getCompanyName());
+        context.setVariable("admin_company_email", adminConfig.getCompanyMail());
         context.setVariable("goodbye_message", "Have a nice day!");
         context.setVariable("show_button", false);
         context.setVariable("is_friend", false);
-        context.setVariable("admin_config", adminConfig);
+        context.setVariable("admin_config", userConfig);
         context.setVariable("application_functionality", functionality);
         return templateEngine.process("mail/created-trello-card-mail", context);
     }
 
     public String countTaskInTrelloEmail(String message){
         Context context = new Context();
-        context.setVariable("user_config", adminConfig);
+        context.setVariable("user_config", userConfig);
         context.setVariable("friend", false);
         context.setVariable("message", message);
         context.setVariable("count_task_url", "http://localhost:8080/v1/trello/getTrelloBoards");
         context.setVariable("button", "Visit website");
         context.setVariable("admin_name", adminConfig.getAdminName());
-        context.setVariable("admin", adminConfig);
+        context.setVariable("admin", userConfig);
 
         return templateEngine.process("mail/count-trello-tasks", context);
     }

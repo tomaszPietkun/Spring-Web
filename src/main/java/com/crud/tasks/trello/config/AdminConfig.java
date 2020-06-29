@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Getter
-public class TrelloAdminConfig {
+public class AdminConfig {
 
-    @Value("${user.name}")
-    private String userName;
+    @Value("${admin.name}")
+    private String adminName;
 
-    @Value("${user.mail}")
-    private String userMail;
+    @Value("${admin.mail}")
+    private String adminMail;
 
     @Value("${info.company.name}")
     private String companyName;
